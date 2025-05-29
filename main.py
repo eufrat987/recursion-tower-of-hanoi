@@ -28,9 +28,7 @@ def solution(source : list[int], destination : list[int], extra : list[int], n):
     move(source, destination)
     solution(extra, destination, source, n-1)
 
-
-
-solution(a, b, c, 6)
-assert is_success() == True, "Should be solved by now"
-
-print("a:", a, "b:", b, "c:", c)
+if __name__ == '__main__':
+    solution(a, b, c, 6)
+    assert is_success() == True, "Should be solved by now"
+    print("a:", a, "b:", b, "c:", c)
