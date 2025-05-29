@@ -9,7 +9,7 @@ Rules:
 # params:
 N = 6
 show_moves = True
-step_count = 0
+step_count = 1
 
 a = [i for i in range(N,0,-1)]
 b = []
@@ -20,14 +20,14 @@ def move(source : list[int], destination : list[int]):
     assert len(destination) == 0 or destination[-1] > source[-1], "Rule 3, Cannot place bigger disk on smaller"
     destination.append(source.pop())
     if show_moves:
-        show_rodes()
+        show_rodes(count_move=show_moves)
 
 def is_success():
     return len(a) == 0 and (len(b) == N or len(c) == N)
 
-def show_rodes():
+def show_rodes(count_move = False):
     global step_count
-    if show_moves:
+    if count_move:
         print("step:", step_count, "| a:", a, "b:", b, "c:", c)
         step_count += 1
     else:
