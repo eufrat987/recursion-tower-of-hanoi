@@ -6,7 +6,12 @@ Rules:
 3. No disk may be placed on top of a disk that is smaller than it.
 '''
 
-a = [6,5,4,3,2,1]
+# params:
+N = 6
+show_moves = True
+step_count = 0
+
+a = [i for i in range(N,0,-1)]
 b = []
 c = []
 
@@ -14,10 +19,19 @@ def move(source : list[int], destination : list[int]):
     assert len(source) > 0, "Source must not be empty"
     assert len(destination) == 0 or destination[-1] > source[-1], "Rule 3, Cannot place bigger disk on smaller"
     destination.append(source.pop())
+    if show_moves:
+        show_rodes()
 
 def is_success():
-    return len(a) == 0 and (len(b) == 6 or len(c) == 6)
+    return len(a) == 0 and (len(b) == N or len(c) == N)
 
+def show_rodes():
+    global step_count
+    if show_moves:
+        print("step:", step_count, "| a:", a, "b:", b, "c:", c)
+        step_count += 1
+    else:
+        print("a:", a, "b:", b, "c:", c)
 
 def solution(source : list[int], destination : list[int], extra : list[int], n):
     if n == 1:
@@ -29,6 +43,10 @@ def solution(source : list[int], destination : list[int], extra : list[int], n):
     solution(extra, destination, source, n-1)
 
 if __name__ == '__main__':
-    solution(a, b, c, 6)
+    print("Tower of hanoi size:", N)
+    show_rodes()
+
+    solution(a, b, c, N)
     assert is_success() == True, "Should be solved by now"
-    print("a:", a, "b:", b, "c:", c)
+
+    show_rodes()
