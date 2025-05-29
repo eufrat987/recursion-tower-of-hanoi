@@ -3,7 +3,7 @@
 Project show recursion in action with non-trivial problem - solving tower of hanoi.
 
 ## Most common trivial problems are calculation of:
-- factorial - 5! = 5*4*3*2*1
+- factorial - 5! = 5 * 4 * 3 * 2 * 1
 - nth fibbonaci number - 1,1,2,3,5,8,...
 
 # Tower of hanoi
